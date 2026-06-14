@@ -37,7 +37,7 @@ body {
     color: var(--text-primary-dark);
     line-height: 1.6;
     overflow-x: hidden;
-    display: flex; /* Sidebar and Main-Content placement */
+    display: flex; /* Sidebar and Main-Content alignment */
 }
 
 /* Base Container Settings */
@@ -148,7 +148,7 @@ header.navbar .container {
     border-color: rgba(255,255,255,0.15);
 }
 
-.menu-toggle {
+#menu-toggle {
     display: none; /* Hidden on Desktop */
 }
 
@@ -415,7 +415,7 @@ footer {
     padding: 50px 0;
     border-top: 1px solid var(--border-dark);
     background: #05070d;
-    margin-top: auto; /* Pushes footer to absolute bottom */
+    margin-top: auto;
 }
 
 .footer-top {
@@ -457,14 +457,13 @@ footer {
 }
 
 /* ==========================================================================
-   8. RESPONSIVE MEDIA BREAKPOINTS (AUTO CONVERSION TO MOBILE TOP-NAV)
+   8. RESPONSIVE MEDIA BREAKPOINTS (FIXED FOR MOBILE NAV TOGGLE)
    ========================================================================== */
 @media (max-width: 1024px) {
     body {
         flex-direction: column;
     }
     
-    /* Transforming left panel into top bar seamlessly */
     header.navbar {
         position: fixed;
         top: 0;
@@ -490,8 +489,8 @@ footer {
         padding-left: 0;
     }
 
-    /* Mobile Hamburger Icon Setup */
-    .menu-toggle {
+    /* Fixed ID Selector for Mobile Button Trigger */
+    #menu-toggle {
         display: block;
         background: none;
         border: none;
@@ -500,7 +499,7 @@ footer {
         cursor: pointer;
     }
 
-    /* Collapsible Navigation Dropdown Menu */
+    /* Collapsible Navigation Dropdown Menu Container */
     .nav-menu {
         position: absolute;
         top: 68px;
@@ -510,11 +509,13 @@ footer {
         border-bottom: 1px solid var(--border-dark);
         padding: 24px;
         gap: 14px;
-        display: none; /* Controlled via JS toggle classes */
+        display: none; /* Controlled via JS active toggle */
+        flex-direction: column;
     }
 
+    /* Target Class Added via JS Click Event */
     .nav-menu.active {
-        display: flex;
+        display: flex !important;
     }
 
     .nav-menu a {
@@ -529,7 +530,7 @@ footer {
         align-self: flex-start;
     }
 
-    /* Shift back content layout parameters to full width */
+    /* Shift back content layers to standard screen viewports */
     .main-content {
         margin-left: 0;
         width: 100%;
