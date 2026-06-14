@@ -1,105 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>EMI Calculator India | GENZEST</title>
-
-<meta name="description" content="Calculate Home Loan, Car Loan and Personal Loan EMI instantly with GENZEST EMI Calculator.">
-
-<link rel="stylesheet" href="../css/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium EMI Calculator | GENZEST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        .tool-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; margin-top: 40px; }
+        .input-card, .result-card { background: linear-gradient(135deg, var(--bg-card-dark) 0%, transparent 100%); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); padding: 32px; }
+        .result-card { background: radial-gradient(circle at top right, var(--accent-glow), transparent); display: flex; flex-direction: column; justify-content: space-between; }
+        .form-group { margin-bottom: 24px; }
+        .form-label-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
+        .input-wrapper-box { position: relative; display: flex; align-items: center; }
+        .currency-symbol { position: absolute; left: 16px; font-weight: 700; color: var(--text-secondary-dark); }
+        .tool-input { width: 100%; padding: 12px 16px 12px 36px; background: var(--bg-dark); border: 1px solid var(--border-dark); color: var(--text-primary-dark); border-radius: 8px; font-family: inherit; font-weight: 600; outline: none; }
+        .tool-input.no-symbol { padding-left: 16px; }
+        .range-slider { width: 100%; margin-top: 10px; accent-color: var(--accent); cursor: pointer; }
+        .currency-select { padding: 6px 12px; background: var(--bg-dark); color: var(--text-primary-dark); border: 1px solid var(--border-dark); border-radius: 6px; font-weight: 600; cursor: pointer; }
+        .summary-item { border-bottom: 1px solid var(--border-dark); padding: 16px 0; }
+        .summary-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .summary-label { font-size: 14px; color: var(--text-secondary-dark); margin-bottom: 4px; }
+        .summary-value { font-size: 24px; font-weight: 800; }
+        .summary-value.total-wealth { font-size: 32px; color: #6366f1; }
+        @media (max-width: 768px) { .tool-layout { grid-template-columns: 1fr; gap: 24px; } }
+    </style>
 </head>
+<body class="dark-theme">
+    <header class="navbar">
+        <div class="container">
+            <div class="logo"><i class="fa-solid fa-chart-line"></i><span>GENZEST</span></div>
+            <nav class="nav-menu">
+                <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="/#calculators" class="active"><i class="fa-solid fa-calculator"></i> Calculators</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <section class="hero" style="padding-top: 60px; padding-bottom: 40px;">
+            <div class="container">
+                <span class="badge"><i class="fa-solid fa-hand-holding-dollar"></i> Loan Tool</span>
+                <h1 style="font-size: 36px; margin-bottom: 8px;">EMI Calculator</h1>
+                <p style="color: var(--text-secondary-dark);">Calculate your monthly installments, total interest payable, and final payout instantly.</p>
+                <div class="tool-layout">
+                    <div class="input-card">
+                        <div class="form-group" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-dark); padding-bottom: 16px;">
+                            <span style="font-weight: 700;"><i class="fa-solid fa-earth-americas"></i> Select Currency</span>
+                            <select id="currency-switch" class="currency-select">
+                                <option value="₹">INR (₹)</option>
+                                <option value="$">USD ($)</option>
+                                <option value="€">EUR (€)</option>
+                                <option value="£">GBP (£)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label-flex"><label>Loan Amount</label><span id="label-loan-amt">1,000,000</span></div>
+                            <div class="input-wrapper-box">
+                                <span class="currency-symbol" id="symbol-1">₹</span>
+                                <input type="number" id="input-loan-amt" class="tool-input" value="1000000">
+                            </div>
+                            <input type="range" id="slider-loan-amt" class="range-slider" min="10000" max="10000000" step="10000" value="1000000">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label-flex"><label>Interest Rate (p.a.)</label><span><span id="label-interest">8.5</span>%</span></div>
+                            <div class="input-wrapper-box"><input type="number" id="input-interest" class="tool-input no-symbol" value="8.5" step="0.1"></div>
+                            <input type="range" id="slider-interest" class="range-slider" min="1" max="20" step="0.1" value="8.5">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label-flex"><label>Loan Tenure</label><span><span id="label-years">5</span> Years</span></div>
+                            <div class="input-wrapper-box"><input type="number" id="input-years" class="tool-input no-symbol" value="5"></div>
+                            <input type="range" id="slider-years" class="range-slider" min="1" max="30" step="1" value="5">
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div>
+                            <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 16px;"><i class="fa-solid fa-wallet"></i> EMI Summary</h3>
+                            <div class="summary-item">
+                                <div class="summary-label">Monthly EMI Payout</div>
+                                <div class="summary-value total-wealth"><span class="curr-render">₹</span><span id="res-emi">0</span></div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-label">Total Interest Payable</div>
+                                <div class="summary-value" style="color: #ef4444;"><span class="curr-render">₹</span><span id="res-interest">0</span></div>
+                            </div>
+                        </div>
+                        <div class="summary-item" style="border: none; padding-top: 24px;">
+                            <div class="summary-label" style="font-weight: 700;">Total Amount (Principal + Interest)</div>
+                            <div class="summary-value" style="font-size: 28px;"><span class="curr-render">₹</span><span id="res-total">0</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem("genzest-theme") || "dark";
+            document.body.className = `${savedTheme}-theme`;
+            const currencySwitch = document.getElementById("currency-switch");
+            const loanInput = document.getElementById("input-loan-amt"), loanSlider = document.getElementById("slider-loan-amt");
+            const rateInput = document.getElementById("input-interest"), rateSlider = document.getElementById("slider-interest");
+            const yearsInput = document.getElementById("input-years"), yearsSlider = document.getElementById("slider-years");
 
-<body>
+            function sync(input, slider, labelId) {
+                const label = document.getElementById(labelId);
+                input.addEventListener("input", () => { slider.value = input.value; label.innerText = parseFloat(input.value || 0).toLocaleString(); calc(); });
+                slider.addEventListener("input", () => { input.value = slider.value; label.innerText = parseFloat(slider.value).toLocaleString(); calc(); });
+            }
+            sync(loanInput, loanSlider, "label-loan-amt"); sync(rateInput, rateSlider, "label-interest"); sync(yearsInput, yearsSlider, "label-years");
 
-<header class="navbar">
-<div class="container">
-<a href="../index.html" class="logo">GENZEST</a>
-</div>
-</header>
+            currencySwitch.addEventListener("change", (e) => {
+                document.getElementById("symbol-1").innerText = e.target.value;
+                document.querySelectorAll(".curr-render").forEach(s => s.innerText = e.target.value);
+                calc();
+            });
 
-<section class="hero">
-
-<div class="container">
-
-<h1>EMI Calculator</h1>
-
-<p>Calculate your monthly EMI instantly.</p>
-
-<br>
-
-<input type="number" id="loanAmount" placeholder="Loan Amount (₹)">
-
-<br><br>
-
-<input type="number" id="interestRate" placeholder="Interest Rate (%)">
-
-<br><br>
-
-<input type="number" id="loanYears" placeholder="Loan Tenure (Years)">
-
-<br><br>
-
-<button onclick="calculateEMI()" class="btn-primary">
-Calculate EMI
-</button>
-
-<br><br>
-
-<div id="result"></div>
-
-</div>
-
-</section>
-
-<script>
-
-function calculateEMI(){
-
-let P =
-parseFloat(document.getElementById("loanAmount").value);
-
-let annualRate =
-parseFloat(document.getElementById("interestRate").value);
-
-let years =
-parseFloat(document.getElementById("loanYears").value);
-
-let r = annualRate/12/100;
-
-let n = years*12;
-
-let emi =
-(P*r*Math.pow(1+r,n))/
-(Math.pow(1+r,n)-1);
-
-let totalPayment =
-emi*n;
-
-let interest =
-totalPayment-P;
-
-document.getElementById("result").innerHTML=`
-
-<h2>Results</h2>
-
-<p><strong>Monthly EMI:</strong>
-₹${emi.toFixed(0)}</p>
-
-<p><strong>Total Interest:</strong>
-₹${interest.toFixed(0)}</p>
-
-<p><strong>Total Payment:</strong>
-₹${totalPayment.toFixed(0)}</p>
-
-`;
-
-}
-
-</script>
-
+            function calc() {
+                const P = parseFloat(loanInput.value) || 0;
+                const r = (parseFloat(rateInput.value) || 0) / 12 / 100;
+                const n = (parseFloat(yearsInput.value) || 0) * 12;
+                let emi = 0;
+                if(r > 0) { emi = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1); } else { emi = P / n; }
+                const totalAmt = emi * n;
+                const totalInt = totalAmt - P;
+                document.getElementById("res-emi").innerText = Math.round(emi).toLocaleString();
+                document.getElementById("res-interest").innerText = Math.round(totalInt > 0 ? totalInt : 0).toLocaleString();
+                document.getElementById("res-total").innerText = Math.round(totalAmt).toLocaleString();
+            }
+            calc();
+        });
+    </script>
 </body>
 </html>
