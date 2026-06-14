@@ -1,1 +1,98 @@
-k
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PPF Calculator India | GENZEST</title>
+
+<meta name="description" content="Calculate PPF maturity amount, total investment and wealth gained instantly.">
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="container">
+<a href="../index.html" class="logo">GENZEST</a>
+</div>
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>PPF Calculator</h1>
+
+<p>Estimate your Public Provident Fund maturity value.</p>
+
+<br>
+
+<input type="number" id="annualInvestment" placeholder="Annual Investment (₹)">
+
+<br><br>
+
+<input type="number" id="interestRate" placeholder="Interest Rate (%)">
+
+<br><br>
+
+<input type="number" id="years" placeholder="Investment Period (Years)">
+
+<br><br>
+
+<button onclick="calculatePPF()" class="btn-primary">
+Calculate PPF
+</button>
+
+<br><br>
+
+<div id="result"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function calculatePPF(){
+
+let annual =
+parseFloat(document.getElementById("annualInvestment").value);
+
+let rate =
+parseFloat(document.getElementById("interestRate").value)/100;
+
+let years =
+parseFloat(document.getElementById("years").value);
+
+let maturity = 0;
+
+for(let i=0;i<years;i++){
+maturity=(maturity+annual)*(1+rate);
+}
+
+let invested=annual*years;
+
+let gain=maturity-invested;
+
+document.getElementById("result").innerHTML=`
+
+<h2>Results</h2>
+
+<p><strong>Total Invested:</strong> ₹${invested.toFixed(0)}</p>
+
+<p><strong>Interest Earned:</strong> ₹${gain.toFixed(0)}</p>
+
+<p><strong>Maturity Value:</strong> ₹${maturity.toFixed(0)}</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
