@@ -1,1 +1,5 @@
-hehe
+User-agent: *
+
+Allow: /
+
+Sitemap: https://www.genzest.in/sitemap.xml
