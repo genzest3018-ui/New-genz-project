@@ -1,1 +1,97 @@
-u
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FD Calculator India | GENZEST</title>
+
+<meta name="description" content="Calculate FD maturity amount and interest earned instantly.">
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="container">
+<a href="../index.html" class="logo">GENZEST</a>
+</div>
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>FD Calculator</h1>
+
+<p>Calculate Fixed Deposit returns instantly.</p>
+
+<br>
+
+<input type="number" id="principal" placeholder="Deposit Amount (₹)">
+
+<br><br>
+
+<input type="number" id="rate" placeholder="Interest Rate (%)">
+
+<br><br>
+
+<input type="number" id="years" placeholder="Tenure (Years)">
+
+<br><br>
+
+<button onclick="calculateFD()" class="btn-primary">
+Calculate FD
+</button>
+
+<br><br>
+
+<div id="result"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function calculateFD(){
+
+let P =
+parseFloat(document.getElementById("principal").value);
+
+let R =
+parseFloat(document.getElementById("rate").value);
+
+let T =
+parseFloat(document.getElementById("years").value);
+
+let maturity =
+P*Math.pow((1+R/100),T);
+
+let gain =
+maturity-P;
+
+document.getElementById("result").innerHTML=`
+
+<h2>Results</h2>
+
+<p><strong>Invested Amount:</strong>
+₹${P.toFixed(0)}</p>
+
+<p><strong>Interest Earned:</strong>
+₹${gain.toFixed(0)}</p>
+
+<p><strong>Maturity Value:</strong>
+₹${maturity.toFixed(0)}</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
