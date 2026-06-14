@@ -10,7 +10,7 @@
     --border-dark: rgba(255, 255, 255, 0.06);
     --text-primary-dark: #f3f4f6;
     --text-secondary-dark: #9ca3af;
-    --card-shadow:0 12px 30px -10px rgba(0, 0, 0, 0.4);
+    --card-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
     
     --accent: #6366f1; /* Royal Indigo */
     --accent-glow: rgba(99, 102, 241, 0.12);
@@ -33,7 +33,7 @@ body.light-theme {
     --card-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.06);
 }
 
-/* PREMIUM EYE-CARE/SEPIA THEME (FIXED FOR 84955_2.JPG) */
+/* PREMIUM EYE-CARE/SEPIA THEME */
 body.eyecare-theme {
     --bg-dark: #f4edd9;
     --sidebar-bg: #ebdcb9;
@@ -250,7 +250,7 @@ header.navbar .container {
 .hero-image img { width: 80%; height: auto; }
 
 /* ==========================================================================
-   4. SEARCH ENGINE & ULTRA-PREMIUM CARDS ENGINE (FIXED)
+   4. SEARCH ENGINE & ULTRA-PREMIUM CARDS ENGINE
    ========================================================================== */
 .section-header-flex {
     display: flex;
