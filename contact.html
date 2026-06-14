@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-25LP8VZBEV"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-25LP8VZBEV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-gtag('config', 'G-25LP8VZBEV');
-</script>
+        gtag('config', 'G-25LP8VZBEV');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | GENZEST</title>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Global Stylesheet Location -->
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <style>
+        /* CONTACT SPECIFIC ENGINE ARCHITECTURE */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -30,7 +34,7 @@ gtag('config', 'G-25LP8VZBEV');
             max-width: 800px;
         }
         .contact-card {
-            background: linear-gradient(135deg, var(--bg-card-dark) 0%, transparent 100%);
+            background: var(--bg-card);
             border: 1px solid var(--border-dark);
             border-radius: var(--radius-lg);
             padding: 32px;
@@ -39,11 +43,38 @@ gtag('config', 'G-25LP8VZBEV');
             gap: 16px;
             text-decoration: none;
             color: inherit;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
             transition: var(--transition);
+        }
+        /* Top Border Micro-Glow layer overlay */
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        body.light-theme .contact-card::before,
+        body.eyecare-theme .contact-card::before {
+            background: linear-gradient(135deg, rgba(0,0,0,0.04), transparent 60%);
         }
         .contact-card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -12px rgba(99, 102, 241, 0.15);
+        }
+        body.eyecare-theme .contact-card:hover {
+            box-shadow: 0 20px 40px -12px rgba(180, 83, 9, 0.18);
         }
         .contact-card i {
             font-size: 28px;
@@ -62,6 +93,7 @@ gtag('config', 'G-25LP8VZBEV');
 </head>
 <body class="dark-theme">
 
+    <!-- LEFT SIDEBAR NAVBAR (Clean URLs Linked) -->
     <header class="navbar">
         <div class="container">
             <div class="logo">
@@ -70,15 +102,17 @@ gtag('config', 'G-25LP8VZBEV');
             </div>
             <nav class="nav-menu">
                 <a href="/"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="/about.html"><i class="fa-solid fa-circle-info"></i> About</a>
-                <a href="/contact.html" class="active"><i class="fa-solid fa-envelope"></i> Contact</a>
+                <a href="/about"><i class="fa-solid fa-circle-info"></i> About</a>
+                <a href="/contact" class="active"><i class="fa-solid fa-envelope"></i> Contact</a>
             </nav>
         </div>
     </header>
 
+    <!-- MAIN CONTENT WRAPPER -->
     <main class="main-content">
         <section class="hero" style="padding-top: 80px; padding-bottom: 60px;">
             <div class="container">
+                <!-- Clean URL Back Button -->
                 <a href="/" class="btn-secondary" style="padding: 10px 20px; font-size: 14px; margin-bottom: 32px; display: inline-flex; align-items: center; gap: 8px;">
                     <i class="fa-solid fa-arrow-left"></i> Back to Home
                 </a>
@@ -87,6 +121,7 @@ gtag('config', 'G-25LP8VZBEV');
                 <h1 style="font-size: 40px; margin-bottom: 12px;">Get in Touch</h1>
                 <p style="color: var(--text-secondary-dark); max-width: 500px;">Have questions, tool requests, or partnership inquiries? Reach out to our operational grid anytime.</p>
                 
+                <!-- Premium Communication Connectors -->
                 <div class="contact-grid">
                     <a href="mailto:genzest3018@gmail.com" class="contact-card">
                         <i class="fa-solid fa-envelope-open-text"></i>
@@ -108,6 +143,7 @@ gtag('config', 'G-25LP8VZBEV');
         </section>
     </main>
 
+    <!-- MULTI-THEME RETRIEVAL ENGINE -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const savedTheme = localStorage.getItem("genzest-theme") || "dark";
