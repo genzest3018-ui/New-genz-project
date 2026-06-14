@@ -1,1 +1,105 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EMI Calculator India | GENZEST</title>
+
+<meta name="description" content="Calculate Home Loan, Car Loan and Personal Loan EMI instantly with GENZEST EMI Calculator.">
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="container">
+<a href="../index.html" class="logo">GENZEST</a>
+</div>
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>EMI Calculator</h1>
+
+<p>Calculate your monthly EMI instantly.</p>
+
+<br>
+
+<input type="number" id="loanAmount" placeholder="Loan Amount (₹)">
+
+<br><br>
+
+<input type="number" id="interestRate" placeholder="Interest Rate (%)">
+
+<br><br>
+
+<input type="number" id="loanYears" placeholder="Loan Tenure (Years)">
+
+<br><br>
+
+<button onclick="calculateEMI()" class="btn-primary">
+Calculate EMI
+</button>
+
+<br><br>
+
+<div id="result"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function calculateEMI(){
+
+let P =
+parseFloat(document.getElementById("loanAmount").value);
+
+let annualRate =
+parseFloat(document.getElementById("interestRate").value);
+
+let years =
+parseFloat(document.getElementById("loanYears").value);
+
+let r = annualRate/12/100;
+
+let n = years*12;
+
+let emi =
+(P*r*Math.pow(1+r,n))/
+(Math.pow(1+r,n)-1);
+
+let totalPayment =
+emi*n;
+
+let interest =
+totalPayment-P;
+
+document.getElementById("result").innerHTML=`
+
+<h2>Results</h2>
+
+<p><strong>Monthly EMI:</strong>
+₹${emi.toFixed(0)}</p>
+
+<p><strong>Total Interest:</strong>
+₹${interest.toFixed(0)}</p>
+
+<p><strong>Total Payment:</strong>
+₹${totalPayment.toFixed(0)}</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
