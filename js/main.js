@@ -2,63 +2,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
     const navLinks = document.querySelectorAll(".nav-menu a");
+    
+    const themeSelect = document.getElementById("theme-select");
+    const searchInput = document.getElementById("calc-search");
+    const calcCards = document.querySelectorAll("#calc-grid .card");
 
-    // 1. Mobile Hamburger Menu Logic
+    // 1. MOBILE RESPONSIVE HAMBURGER MENU
     if (menuToggle && navMenu) {
         menuToggle.addEventListener("click", (e) => {
-            e.stopPropagation(); // Prevents immediate closing
+            e.stopPropagation();
             navMenu.classList.toggle("active");
-            
-            // Toggle icon between Hamburger (bars) and Close (xmark)
             const icon = menuToggle.querySelector("i");
-            if (navMenu.classList.contains("active")) {
-                icon.className = "fa-solid fa-xmark";
-            } else {
-                icon.className = "fa-solid fa-bars";
-            }
+            icon.className = navMenu.classList.contains("active") ? "fa-solid fa-xmark" : "fa-solid fa-bars";
         });
 
-        // Close mobile menu when clicking outside of it
         document.addEventListener("click", (e) => {
             if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                if (navMenu.classList.contains("active")) {
-                    navMenu.classList.remove("active");
-                    menuToggle.querySelector("i").className = "fa-solid fa-bars";
-                }
+                navMenu.classList.remove("active");
+                menuToggle.querySelector("i").className = "fa-solid fa-bars";
             }
         });
+    }
 
-        // Close mobile menu automatically after clicking any link
-        navLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                if (window.innerWidth <= 1024) { // Only on mobile/tablet view
-                    navMenu.classList.remove("active");
-                    menuToggle.querySelector("i").className = "fa-solid fa-bars";
+    // 2. PREMIUM 3-WAY MULTI-THEME CONTROLLER (Dark, Light, Eye-care)
+    if (themeSelect) {
+        // LocalStorage check taaki page refresh par theme save rahe
+        const savedTheme = localStorage.getItem("genzest-theme") || "dark";
+        themeSelect.value = savedTheme;
+        applyTheme(savedTheme);
+
+        themeSelect.addEventListener("change", (e) => {
+            const selectedTheme = e.target.value;
+            applyTheme(selectedTheme);
+            localStorage.setItem("genzest-theme", selectedTheme);
+        });
+    }
+
+    function applyTheme(theme) {
+        document.body.classList.remove("dark-theme", "light-theme", "eyecare-theme");
+        if (theme === "light") {
+            document.body.classList.add("light-theme");
+        } else if (theme === "eyecare") {
+            document.body.classList.add("eyecare-theme");
+        } else {
+            document.body.classList.add("dark-theme");
+        }
+    }
+
+    // 3. INSTANT SEARCH FILTER ENGINE
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            calcCards.forEach(card => {
+                const searchKeywords = card.getAttribute("data-title").toLowerCase();
+                if (searchKeywords.includes(query)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
                 }
             });
         });
     }
-
-    // 2. Active Class Switcher on Scroll (Premium UX Feature)
-    const sections = document.querySelectorAll("section, main > div");
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - 150) {
-                current = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach((link) => {
-            link.classList.remove("active");
-            // If we are at the top or on hero section, make home active
-            if (current === "calculators" && link.getAttribute("href").includes("#calculators")) {
-                link.classList.add("active");
-            } else if (!current && link.getAttribute("href") === "/") {
-                link.classList.add("active");
-            }
-        });
-    });
 });
