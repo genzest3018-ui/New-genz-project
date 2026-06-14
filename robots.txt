@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Allow: /about.html
-Allow: /contact.html
+Allow: /about
+Allow: /contact
 Allow: /calculators/
 
 # Updated Sitemaps Location Target Link
