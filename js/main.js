@@ -1,87 +1,64 @@
-// DARK / LIGHT THEME
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll(".nav-menu a");
 
-const themeBtn = document.getElementById("theme-toggle");
-
-if(localStorage.getItem("theme") === "light"){
-    document.body.classList.add("light-mode");
-}
-
-themeBtn?.addEventListener("click", () => {
-
-    document.body.classList.toggle("light-mode");
-
-    if(document.body.classList.contains("light-mode")){
-        localStorage.setItem("theme","light");
-    }else{
-        localStorage.setItem("theme","dark");
-    }
-
-});
-
-
-// SEARCH FUNCTIONALITY
-
-const searchInput = document.getElementById("searchInput");
-
-if(searchInput){
-
-    searchInput.addEventListener("keyup", () => {
-
-        const value = searchInput.value.toLowerCase();
-
-        const cards = document.querySelectorAll(".card");
-
-        cards.forEach(card => {
-
-            const text = card.innerText.toLowerCase();
-
-            if(text.includes(value)){
-                card.style.display = "block";
-            }else{
-                card.style.display = "none";
+    // 1. Mobile Hamburger Menu Logic
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevents immediate closing
+            navMenu.classList.toggle("active");
+            
+            // Toggle icon between Hamburger (bars) and Close (xmark)
+            const icon = menuToggle.querySelector("i");
+            if (navMenu.classList.contains("active")) {
+                icon.className = "fa-solid fa-xmark";
+            } else {
+                icon.className = "fa-solid fa-bars";
             }
-
         });
 
+        // Close mobile menu when clicking outside of it
+        document.addEventListener("click", (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                if (navMenu.classList.contains("active")) {
+                    navMenu.classList.remove("active");
+                    menuToggle.querySelector("i").className = "fa-solid fa-bars";
+                }
+            }
+        });
+
+        // Close mobile menu automatically after clicking any link
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                if (window.innerWidth <= 1024) { // Only on mobile/tablet view
+                    navMenu.classList.remove("active");
+                    menuToggle.querySelector("i").className = "fa-solid fa-bars";
+                }
+            });
+        });
+    }
+
+    // 2. Active Class Switcher on Scroll (Premium UX Feature)
+    const sections = document.querySelectorAll("section, main > div");
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 150) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            // If we are at the top or on hero section, make home active
+            if (current === "calculators" && link.getAttribute("href").includes("#calculators")) {
+                link.classList.add("active");
+            } else if (!current && link.getAttribute("href") === "/") {
+                link.classList.add("active");
+            }
+        });
     });
-
-}
-
-
-// CURRENT YEAR FOOTER
-
-const yearElement = document.getElementById("year");
-
-if(yearElement){
-    yearElement.textContent = new Date().getFullYear();
-}
-
-
-// SIMPLE ANIMATION
-
-const cards = document.querySelectorAll(".card");
-
-const observer = new IntersectionObserver(entries => {
-
-    entries.forEach(entry => {
-
-        if(entry.isIntersecting){
-
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-
-        }
-
-    });
-
-});
-
-cards.forEach(card => {
-
-    card.style.opacity = "0";
-    card.style.transform = "translateY(30px)";
-    card.style.transition = "0.5s ease";
-
-    observer.observe(card);
-
 });
