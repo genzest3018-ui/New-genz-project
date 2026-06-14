@@ -1,5 +1,8 @@
 User-agent: *
-
 Allow: /
+Allow: /about.html
+Allow: /contact.html
+Allow: /calculators/
 
-Sitemap: https://www.genzest.in/sitemap.xml
+# Updated Sitemaps Location Target Link
+Sitemap: https://genzest.in/sitemap.xml
