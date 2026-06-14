@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-25LP8VZBEV"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-25LP8VZBEV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-gtag('config', 'G-25LP8VZBEV');
-</script>
-
+        gtag('config', 'G-25LP8VZBEV');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | GENZEST</title>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Global Stylesheet Location -->
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 <body class="dark-theme">
 
+    <!-- LEFT SIDEBAR NAVBAR (Clean URLs Linked) -->
     <header class="navbar">
         <div class="container">
             <div class="logo">
@@ -33,15 +35,17 @@ gtag('config', 'G-25LP8VZBEV');
             </div>
             <nav class="nav-menu">
                 <a href="/"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="/about.html" class="active"><i class="fa-solid fa-circle-info"></i> About</a>
-                <a href="/contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+                <a href="/about" class="active"><i class="fa-solid fa-circle-info"></i> About</a>
+                <a href="/contact"><i class="fa-solid fa-envelope"></i> Contact</a>
             </nav>
         </div>
     </header>
 
+    <!-- MAIN CONTENT WRAPPER -->
     <main class="main-content">
         <section class="hero" style="padding-top: 80px; padding-bottom: 60px;">
             <div class="container">
+                <!-- Clean URL Back Button -->
                 <a href="/" class="btn-secondary" style="padding: 10px 20px; font-size: 14px; margin-bottom: 32px; display: inline-flex; align-items: center; gap: 8px;">
                     <i class="fa-solid fa-arrow-left"></i> Back to Home
                 </a>
@@ -49,7 +53,8 @@ gtag('config', 'G-25LP8VZBEV');
                 <span class="badge" style="display: block; width: max-content;">Our Vision</span>
                 <h1 style="font-size: 40px; margin-bottom: 20px;">About GENZEST</h1>
                 
-                <div style="background: linear-gradient(135deg, var(--bg-card-dark) 0%, transparent 100%); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); padding: 40px; max-width: 800px;">
+                <!-- Main Core Vision Panel Box -->
+                <div style="background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); padding: 40px; max-width: 800px; box-shadow: var(--card-shadow);">
                     <p style="font-size: 18px; color: var(--text-primary-dark); margin-bottom: 20px; font-weight: 600;">
                         We are building the next generation of financial toolkits. Fast, elegant, and completely private.
                     </p>
@@ -65,6 +70,7 @@ gtag('config', 'G-25LP8VZBEV');
         </section>
     </main>
 
+    <!-- MULTI-THEME RETRIEVAL ENGINE -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const savedTheme = localStorage.getItem("genzest-theme") || "dark";
