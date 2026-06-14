@@ -9,16 +9,19 @@
     <meta name="keywords" content="SIP Calculator, EMI Calculator, FD Calculator, CAGR Calculator, Financial Tools, Investment Calculator">
     <meta name="robots" content="index, follow">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Stylesheets & Icons -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/favicon.ico">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 <body class="dark-theme">
 
+    <!-- LEFT SIDEBAR NAVBAR -->
     <header class="navbar">
         <div class="container">
             <div class="logo">
@@ -38,6 +41,7 @@
                 <a href="/about.html"><i class="fa-solid fa-circle-info"></i> About</a>
                 <a href="/contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
                 
+                <!-- Premium Multi-Theme Dropdown Selector -->
                 <div class="theme-selector-container">
                     <label for="theme-select"><i class="fa-solid fa-palette"></i> Theme</label>
                     <select id="theme-select" class="theme-dropdown">
@@ -50,8 +54,10 @@
         </div>
     </header>
 
+    <!-- MAIN CONTENT WRAPPER -->
     <main class="main-content">
 
+        <!-- HERO SECTION -->
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-content">
@@ -73,6 +79,7 @@
             </div>
         </section>
 
+        <!-- LIVE DATA STATS ROW -->
         <section class="stats-counter" style="padding: 40px 0; border-top: 1px solid var(--border-dark); background: rgba(255,255,255,0.002);">
             <div class="container">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; text-align: center;">
@@ -92,6 +99,7 @@
             </div>
         </section>
 
+        <!-- CALCULATORS SECTION WITH REAL-TIME SEARCH & HORIZONTAL SCROLLER -->
         <section id="calculators" class="calculators">
             <div class="container">
                 <div class="section-header-flex">
@@ -106,6 +114,7 @@
                     </div>
                 </div>
                 
+                <!-- Horizontal Touch/Swipe Scroller Wrapper -->
                 <div class="scroller-container">
                     <div class="card-grid-horizontal" id="calc-grid">
                         <a href="calculators/sip-calculator.html" class="card" data-title="sip calculator investment returns">
@@ -147,6 +156,7 @@
             </div>
         </section>
 
+        <!-- PROCESS SECTION: HOW IT WORKS -->
         <section id="how-it-works" class="features" style="background: transparent;">
             <div class="container">
                 <div class="section-header" style="text-align: center; margin-bottom: 48px;">
@@ -173,6 +183,7 @@
             </div>
         </section>
 
+        <!-- WHY GENZEST SECTION -->
         <section class="features">
             <div class="container">
                 <div class="section-header">
@@ -198,24 +209,52 @@
             </div>
         </section>
 
+        <!-- FAQ SECTION: CRISP & DANG KE BULLET POINTS -->
         <section id="faqs" class="features" style="background: transparent; border-bottom: none;">
             <div class="container">
                 <div class="section-header" style="margin-bottom: 40px;">
                     <h2>Frequently Asked Questions</h2>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 16px; max-width: 800px;">
-                    <div style="padding: 20px; background: var(--bg-card-dark); border: 1px solid var(--border-dark); border-radius: var(--radius-md);">
-                        <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;"><i class="fa-solid fa-circle-nodes" style="color:var(--accent); margin-right:8px;"></i> Are these projections precise?</h3>
-                        <p style="color: var(--text-secondary-dark); font-size: 14px;">Yes. All computational logic patterns use mathematically validated interest and compound compounding models down to the last decimal.</p>
+                    
+                    <!-- FAQ 1 -->
+                    <div style="padding: 24px; background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: var(--radius-md); box-shadow: var(--card-shadow);">
+                        <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 10px;">
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent); margin-right:8px;"></i> 
+                            Are these calculators accurate?
+                        </h3>
+                        <p style="color: var(--text-secondary-dark); font-size: 14.5px; line-height: 1.6;">
+                            Yes, 100%. All calculations use standard financial compounding formulas. You get the exact same results used by banks and top investment platforms.
+                        </p>
                     </div>
-                    <div style="padding: 20px; background: var(--bg-card-dark); border: 1px solid var(--border-dark); border-radius: var(--radius-md);">
-                        <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;"><i class="fa-solid fa-database" style="color:var(--accent); margin-right:8px;"></i> Where is my input data stored?</h3>
-                        <p style="color: var(--text-secondary-dark); font-size: 14px;">Nowhere. GENZEST does not own centralized backend server databases. Everything runs natively within your temporary browser sandboxed memory.</p>
+                    
+                    <!-- FAQ 2 -->
+                    <div style="padding: 24px; background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: var(--radius-md); box-shadow: var(--card-shadow);">
+                        <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 10px;">
+                            <i class="fa-solid fa-lock" style="color:var(--accent); margin-right:8px;"></i> 
+                            Is my financial data safe here?
+                        </h3>
+                        <p style="color: var(--text-secondary-dark); font-size: 14.5px; line-height: 1.6;">
+                            Completely. We don't have servers or databases, and we don't ask for any signup. Whatever you type stays on your device and disappears the moment you close the tab.
+                        </p>
                     </div>
+
+                    <!-- FAQ 3 -->
+                    <div style="padding: 24px; background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: var(--radius-md); box-shadow: var(--card-shadow);">
+                        <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 10px;">
+                            <i class="fa-solid fa-hand-holding-dollar" style="color:var(--accent); margin-right:8px;"></i> 
+                            Is it completely free to use?
+                        </h3>
+                        <p style="color: var(--text-secondary-dark); font-size: 14.5px; line-height: 1.6;">
+                            Yes, it's 100% free with no hidden charges, premium paywalls, or annoying pop-up ads. Just pure financial tools whenever you need them.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </section>
      
+        <!-- FOOTER SECTION -->
         <footer>
             <div class="container">
                 <div class="footer-top">
