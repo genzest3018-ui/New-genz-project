@@ -1,1 +1,87 @@
-wow
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CAGR Calculator | GENZEST</title>
+
+<meta name="description" content="Calculate CAGR (Compound Annual Growth Rate) of your investments instantly.">
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="container">
+<a href="../index.html" class="logo">GENZEST</a>
+</div>
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>CAGR Calculator</h1>
+
+<p>Calculate annualized investment growth rate.</p>
+
+<br>
+
+<input type="number" id="beginValue" placeholder="Beginning Value (₹)">
+
+<br><br>
+
+<input type="number" id="endValue" placeholder="Ending Value (₹)">
+
+<br><br>
+
+<input type="number" id="years" placeholder="Years">
+
+<br><br>
+
+<button onclick="calculateCAGR()" class="btn-primary">
+Calculate CAGR
+</button>
+
+<br><br>
+
+<div id="result"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function calculateCAGR(){
+
+let begin =
+parseFloat(document.getElementById("beginValue").value);
+
+let end =
+parseFloat(document.getElementById("endValue").value);
+
+let years =
+parseFloat(document.getElementById("years").value);
+
+let cagr =
+(Math.pow(end/begin,1/years)-1)*100;
+
+document.getElementById("result").innerHTML=`
+
+<h2>Results</h2>
+
+<p><strong>CAGR:</strong> ${cagr.toFixed(2)}%</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
