@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-25LP8VZBEV"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-25LP8VZBEV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-gtag('config', 'G-25LP8VZBEV');
-</script>
+        gtag('config', 'G-25LP8VZBEV');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium SIP Calculator | GENZEST</title>
@@ -30,13 +30,14 @@ gtag('config', 'G-25LP8VZBEV');
             margin-top: 40px;
         }
         .input-card, .result-card {
-            background: linear-gradient(135deg, var(--bg-card-dark) 0%, transparent 100%);
+            background: var(--bg-card);
             border: 1px solid var(--border-dark);
             border-radius: var(--radius-lg);
             padding: 32px;
+            box-shadow: var(--card-shadow);
         }
         .result-card {
-            background: radial-gradient(circle at top right, var(--accent-glow), transparent);
+            background: radial-gradient(circle at top right, var(--accent-glow), var(--bg-card));
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -114,7 +115,7 @@ gtag('config', 'G-25LP8VZBEV');
             font-size: 32px;
             color: #10b981; /* Premium Wealth Green */
         }
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .tool-layout {
                 grid-template-columns: 1fr;
                 gap: 24px;
