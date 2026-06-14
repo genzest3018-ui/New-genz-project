@@ -1,1 +1,110 @@
-hehe
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SIP Calculator India | GENZEST</title>
+
+<meta name="description" content="Free SIP Calculator to calculate mutual fund returns, maturity amount and wealth gained instantly.">
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="container">
+
+<a href="../index.html" class="logo">
+GENZEST
+</a>
+
+</div>
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>SIP Calculator</h1>
+
+<p>
+Calculate your future SIP investment value instantly.
+</p>
+
+<br>
+
+<input type="number" id="monthlyInvestment" placeholder="Monthly Investment (₹)">
+
+<br><br>
+
+<input type="number" id="returnRate" placeholder="Expected Return (%)">
+
+<br><br>
+
+<input type="number" id="years" placeholder="Investment Period (Years)">
+
+<br><br>
+
+<button onclick="calculateSIP()" class="btn-primary">
+Calculate SIP
+</button>
+
+<br><br>
+
+<div id="result"></div>
+
+</div>
+
+</section>
+
+<script>
+
+function calculateSIP(){
+
+let monthly =
+parseFloat(document.getElementById("monthlyInvestment").value);
+
+let rate =
+parseFloat(document.getElementById("returnRate").value)/12/100;
+
+let years =
+parseFloat(document.getElementById("years").value);
+
+let months = years*12;
+
+let maturity =
+monthly *
+((Math.pow(1+rate,months)-1)/rate)*
+(1+rate);
+
+let invested =
+monthly*months;
+
+let gain =
+maturity-invested;
+
+document.getElementById("result").innerHTML=`
+
+<h2>Results</h2>
+
+<p><strong>Total Invested:</strong>
+₹${invested.toFixed(0)}</p>
+
+<p><strong>Estimated Returns:</strong>
+₹${gain.toFixed(0)}</p>
+
+<p><strong>Maturity Value:</strong>
+₹${maturity.toFixed(0)}</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
