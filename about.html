@@ -1,48 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | GENZEST</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>About GENZEST</title>
-
-<meta name="description" content="Learn about GENZEST and our mission to simplify finance through smart calculators and tools.">
-
-<link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
+<body class="dark-theme">
 
-<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>GENZEST</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="/about.html" class="active"><i class="fa-solid fa-circle-info"></i> About</a>
+                <a href="/contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </nav>
+        </div>
+    </header>
 
-<header class="navbar">
-<div class="container">
-<a href="index.html" class="logo">GENZEST</a>
-</div>
-</header>
+    <main class="main-content">
+        <section class="hero" style="padding-top: 80px; padding-bottom: 60px;">
+            <div class="container">
+                <a href="/" class="btn-secondary" style="padding: 10px 20px; font-size: 14px; margin-bottom: 32px; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Home
+                </a>
 
-<section class="hero">
+                <span class="badge" style="display: block; width: max-content;">Our Vision</span>
+                <h1 style="font-size: 40px; margin-bottom: 20px;">About GENZEST</h1>
+                
+                <div style="background: linear-gradient(135deg, var(--bg-card-dark) 0%, transparent 100%); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); padding: 40px; max-width: 800px;">
+                    <p style="font-size: 18px; color: var(--text-primary-dark); margin-bottom: 20px; font-weight: 600;">
+                        We are building the next generation of financial toolkits. Fast, elegant, and completely private.
+                    </p>
+                    <p style="color: var(--text-secondary-dark); margin-bottom: 24px; line-height: 1.8;">
+                        GENZEST was born out of a simple frustration: financial tools on the internet are slow, packed with heavy tracking code, outdated layouts, and painful pop-up ads. We stripped away the noise to bring you clean dashboard style calculations.
+                    </p>
+                    <h3 style="font-size: 20px; margin-bottom: 12px; font-weight: 700; color: var(--accent);"><i class="fa-solid fa-shield-halved"></i> 100% Privacy Locked</h3>
+                    <p style="color: var(--text-secondary-dark); line-height: 1.8;">
+                        We do not collect numbers, track portfolios, or ask for account logins. All complex compound calculations run inside your browser client memory workspace instantly.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<div class="container">
-
-<h1>About GENZEST</h1>
-
-<p>
-GENZEST is a collection of smart financial calculators and tools
-designed to help students, investors and professionals make
-better money decisions.
-</p>
-
-<br>
-
-<p>
-Our mission is simple:
-make finance easy, accessible and free for everyone.
-</p>
-
-</div>
-
-</section>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem("genzest-theme") || "dark";
+            document.body.className = `${savedTheme}-theme`;
+        });
+    </script>
 </body>
 </html>
